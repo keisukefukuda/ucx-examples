@@ -17,7 +17,7 @@ before_install:
     - cd ucx
     - git checkout $UCX_VERSION
     - ./autogen.sh
-    - ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --without-java
+    - ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --with-java=no
     - make -j4 install
 
 script:
