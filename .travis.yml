@@ -1,6 +1,6 @@
 os: linux
 dist: bionic
-language: cxx
+language: cpp
 jobs:
     include:
         - env: UCX_VERSION=master
