@@ -10,7 +10,7 @@ compiler: clang
 
 before_install:
     - sudo apt-get update
-    - sudo apt-get install -y clang-format-8 autotools-dev libtool libnuma-devel
+    - sudo apt-get install -y clang-format-8 autotools-dev libtool libnuma-dev
     - git clone https://github.com/openucx/ucx.git && cd ucx && ./autogen.sh && ./configure --prefix=/usr && make -j4 install
 
 script:
