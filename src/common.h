@@ -1,0 +1,6 @@
+#ifndef UCX_EXAMPLES_COMMON_H__
+#define UCX_EXAMPLES_COMMON_H__
+
+
+
+#endif /* UCX_EXAMPLES_COMMON_H__ */
