@@ -2,11 +2,11 @@ os: linux
 dist: bionic
 language: c
 compiler: clang
-# jobs:
-#     include:
-#         - env: UCX_VERSION=master
-#         - env: UCX_VERSION=v1.9.x
-#         - env: UCX_VERSION=v1.8.x
+jobs:
+    include:
+        - env: UCX_VERSION=master
+        - env: UCX_VERSION=v1.9.x
+        - env: UCX_VERSION=v1.8.x
 
 before_install:
     - sudo apt-get update
