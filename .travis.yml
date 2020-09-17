@@ -13,7 +13,13 @@ jobs:
 before_install:
     - sudo apt-get update
     - sudo apt-get install -y clang-format-8 autotools-dev libtool libnuma-dev
-    - git clone https://github.com/openucx/ucx.git && cd ucx && git checkout $UCX_VERSION && ./autogen.sh && ./configure --prefix=/usr --disable-gtest --disable-examples && make -j4 && sudo make install
+    - git clone https://github.com/openucx/ucx.git
+    - cd ucx
+    - git checkout $UCX_VERSION
+    - ./autogen.sh
+    - ./configure --prefix=/usr --disable-gtest --disable-examples --without-java
+    - make -j4
+    - sudo make install
 
 script:
     - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
