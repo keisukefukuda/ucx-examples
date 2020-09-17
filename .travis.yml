@@ -17,12 +17,11 @@ before_install:
     - cd ucx
     - git checkout $UCX_VERSION
     - ./autogen.sh
-    - ./configure --prefix=/usr --disable-gtest --disable-examples --without-java
-    - make -j4
-    - sudo make install
+    - ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --without-java
+    - make -j4 install
 
 script:
     - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
     - ./autogen.sh
-    - ./configure
+    - ./configure LDFLAGS="-L$HOME/usr/lib" CFLAGS="-I$HOME/usr/include"
     - make
