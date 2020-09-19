@@ -1,6 +1,8 @@
 os: linux
 dist: xenial
 language: cpp
+
+language: java
 jdk: oraclejdk9
 
 jobs:
