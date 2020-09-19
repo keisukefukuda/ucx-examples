@@ -24,6 +24,7 @@ before_install:
 
 script:
     - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
+    - java -version
     - ./autogen.sh
     - ./configure LDFLAGS="-L$HOME/usr/lib" CFLAGS="-I$HOME/usr/include"
     - make
