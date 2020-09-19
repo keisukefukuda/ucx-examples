@@ -7,10 +7,10 @@ jobs:
     include:
         - env: UCX_VERSION=master
           compiler: clang
-        - env: UCX_VERSION=v1.9.x
-          compiler: clang
-        - env: UCX_VERSION=v1.8.x
-          compiler: clang
+#        - env: UCX_VERSION=v1.9.x
+#          compiler: clang
+#        - env: UCX_VERSION=v1.8.x
+#          compiler: clang
 
 before_install:
     - sudo apt-get update
