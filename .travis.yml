@@ -1,6 +1,8 @@
 os: linux
 dist: xenial
 language: cpp
+jdk: oraclejdk9
+
 jobs:
     include:
         - env: UCX_VERSION=master
