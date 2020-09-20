@@ -21,9 +21,8 @@ before_install:
         pushd ucx &&
         git checkout $UCX_VERSION &&
         ./autogen.sh &&
-        ./configure --disable-gtest --disable-examples --with-java=no &&
-        make -j4 &&
-        sudo make install &&
+        ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --with-java=no &&
+        make -j4 install &&
         popd; 
       fi
 
@@ -31,7 +30,7 @@ script:
     - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
     - pwd
     - ./autogen.sh
-    - ls
     - ./configure LDFLAGS="-L$HOME/usr/lib" CFLAGS="-I$HOME/usr/include"
     - make
+    - export LD_LIBRARY_PATH=$HOME/usr/lib
     - ./src/ucp_hello_world  # Run the program
