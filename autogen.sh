@@ -8,6 +8,3 @@ rm -rf autom4te.cache
 
 autoreconf -v --install || exit 1
 rm -rf autom4te.cache
-# autoheader
-# aclocal
-# automake --add-missing --copy

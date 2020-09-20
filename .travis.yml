@@ -31,3 +31,4 @@ script:
     - ls
     - ./configure LDFLAGS="-L$HOME/usr/lib" CFLAGS="-I$HOME/usr/include"
     - make
+    - ./src/ucp_hello_world  # Run the program
