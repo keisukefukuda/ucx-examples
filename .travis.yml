@@ -15,7 +15,7 @@ jobs:
 before_install:
     - sudo apt-get update
     - sudo apt-get install -y clang-format-8 autotools-dev libtool libnuma-dev
-    - java -version
+    - if [ ! -f $HOME/usr/lib/libuct.a ]; then
     - git clone https://github.com/openucx/ucx.git
     - cd ucx
     - git checkout $UCX_VERSION
@@ -23,10 +23,12 @@ before_install:
     - ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --with-java=no
     - make -j4 install
     - cd ..
+    - fi
 
 script:
     - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
     - pwd
     - ./autogen.sh
+    - ls
     - ./configure LDFLAGS="-L$HOME/usr/lib" CFLAGS="-I$HOME/usr/include"
     - make
