@@ -21,8 +21,9 @@ before_install:
         pushd ucx &&
         git checkout $UCX_VERSION &&
         ./autogen.sh &&
-        ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --with-java=no &&
-        make -j4 install &&
+        ./configure --disable-gtest --disable-examples --with-java=no &&
+        make -j4 &&
+        sudo make install &&
         popd; 
       fi
 
