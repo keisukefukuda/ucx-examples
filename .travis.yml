@@ -15,14 +15,14 @@ jobs:
 before_install:
     - sudo apt-get update
     - sudo apt-get install -y clang-format-8 autotools-dev libtool libnuma-dev
-    - if [ ! -f $HOME/usr/lib/libuct.a ]; then
-    - git clone https://github.com/openucx/ucx.git
-    - cd ucx
+    - if [ ! -f $HOME/usr/lib/libuct.a ]; 
+    - then git clone https://github.com/openucx/ucx.git
+    - pushd ucx
     - git checkout $UCX_VERSION
     - ./autogen.sh
     - ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --with-java=no
     - make -j4 install
-    - cd ..
+    - popd
     - fi
 
 script:
