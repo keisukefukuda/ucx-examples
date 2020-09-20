@@ -24,10 +24,11 @@ before_install:
     - ./autogen.sh
     - ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --with-java=no
     - make -j4 install
+    - cd ..
 
 script:
     - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
-
+    - pwd
     - ./autogen.sh
     - ./configure LDFLAGS="-L$HOME/usr/lib" CFLAGS="-I$HOME/usr/include"
     - make
