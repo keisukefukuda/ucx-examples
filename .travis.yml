@@ -1,13 +1,36 @@
-os: bionic
-language: c
-compiler: clang
+os: linux
+dist: xenial
+language: cpp
+cache:
+  directories:
+    - $HOME/usr
+
+jobs:
+    include:
+        - env: UCX_VERSION=master
+          compiler: clang
+#        - env: UCX_VERSION=v1.9.x
+#          compiler: clang
+#        - env: UCX_VERSION=v1.8.x
+#          compiler: clang
 
 before_install:
-    - apt-get update; apt-get install -y clang-format-8 autotools-dev libtool
-    - git clone https://github.com/openucx/ucx.git && cd ucx && ./autogen && ./configure --prefix=/usr && make -j4 install
+    - sudo apt-get update
+    - sudo apt-get install -y clang-format-8 autotools-dev libtool libnuma-dev
+    - if [ ! -f $HOME/usr/lib/libuct.a ]; then git clone https://github.com/openucx/ucx.git &&
+        pushd ucx &&
+        git checkout $UCX_VERSION &&
+        ./autogen.sh &&
+        ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --with-java=no &&
+        make -j4 install &&
+        popd; 
+      fi
 
 script:
     - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
-    - ./autogen
-    - ./configure
+    - pwd
+    - ./autogen.sh
+    - ./configure LDFLAGS="-L$HOME/usr/lib" CFLAGS="-I$HOME/usr/include"
     - make
+    - export LD_LIBRARY_PATH=$HOME/usr/lib
+    - ./src/ucp_hello_world  # Run the program

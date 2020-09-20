@@ -3,6 +3,8 @@ cp LICENSE COPYING
 cp README.md README
 touch AUTHORS
 touch NEWS
-autoheader
-aclocal
-automake --add-missing --copy
+
+rm -rf autom4te.cache
+
+autoreconf -v --install || exit 1
+rm -rf autom4te.cache
