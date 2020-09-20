@@ -21,7 +21,7 @@ before_install:
         ./autogen.sh && \
         ./configure --prefix=$HOME/usr --disable-gtest --disable-examples --with-java=no && \
         make -j4 install && \      
-        popd && \
+        popd ; \
       fi
 
 script:
