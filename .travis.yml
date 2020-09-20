@@ -1,7 +1,9 @@
 os: linux
 dist: xenial
 language: cpp
-jdk: oraclejdk9
+cache:
+  directories:
+    - $HOME/usr
 
 jobs:
     include:
